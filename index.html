@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #0f172a; /* slate-900 */
+      color: #e5e7eb; /* gray-200 */
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    .actions {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    a.button {
+      text-decoration: none;
+      padding: 1rem 2rem;
+      border-radius: 0.75rem;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: transform 0.15s ease, background-color 0.15s ease;
+    }
+
+    a.button.contributor {
+      background: #2563eb; /* blue-600 */
+      color: #ffffff;
+    }
+
+    a.button.scout {
+      background: #16a34a; /* green-600 */
+      color: #ffffff;
+    }
+
+    a.button:hover {
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Select your role</h1>
+    <div class="actions">
+      <a class="button contributor" href="contributor.html">Contributor</a>
+      <a class="button scout" href="scout.html">Scout</a>
+    </div>
+  </div>
+</body>
+</html>
