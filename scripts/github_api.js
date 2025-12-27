@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     patForm.addEventListener('submit', function(event) {
         event.preventDefault();
         const token = document.getElementById('pat-token').value;
-        const locations = ['Austria', 'Belgium', 'Bulgaria', 'Denmark', 'France', 'Luxembourg', 'Malta', 'Netherlands', 'Poland', 'Romania', 'Switzerland'];
+        const locations = ['Bucharest', 'Berlin', 'Paris',  'Copenhagen', 'Aarhus', 'London', 'Amsterdam', 'Brussels', 'Vienna', 'Zurich', 'Warsaw'];
     
         locations.forEach(location => {
             fetchGitHubUsersByLocation(location, token);
