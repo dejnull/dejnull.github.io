@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>TechHeatmap</title>
+    <title>TechMap</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
@@ -102,7 +102,30 @@
         <input type="text" id="pat-token" name="pat-token" required>
         <input type="submit" value="Submit">
     </form> -->
-    <h1>GitHub Accounts per Country</h1>
+    <h1 id="animated-header">Global Map of GitHub Builders</h1>
+    <style>
+        @keyframes typing {
+            0% { width: 0; }
+            50% { width: 100%; }
+            100% { width: 0; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        #animated-header {
+            display: inline-block;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 4px solid var(--primary);
+            animation: typing 6s steps(30, end) infinite, blink 0.5s step-end infinite;
+        }
+    </style>
     <div id="map"></div>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
