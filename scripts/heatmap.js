@@ -61,14 +61,47 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(response => response.json())
             .then(data => {
                 const count = data.total_count;
-                L.marker(city.coords)
-                    .addTo(map)
-                    .bindPopup(`${city.name}: ${count} GitHub accounts`);
+                const marker = L.marker(city.coords).addTo(map);
+                marker.bindPopup(`
+                    <div>
+                        <strong>${city.name}: ${count} GitHub accounts</strong><br>
+                        <a href="#" class="find-out-more" data-city="${city.name}">Find out more</a>
+                    </div>
+                `);
+
+                marker.on('popupopen', function(e) {
+                    const popup = e.popup.getElement();
+                    const link = popup.querySelector('.find-out-more');
+                    if (link) {
+                        link.addEventListener('click', function(event) {
+                            event.preventDefault();
+                            const cityName = event.target.getAttribute('data-city');
+                            fetchTopUsersByFollowers(cityName);
+                        });
+                    }
+                });
             })
             .catch(err => {
                 console.error(`Error fetching GitHub user count for ${city.name}:`, err);
             });
     });
+
+    function fetchTopUsersByFollowers(cityName) {
+        fetch(`https://api.github.com/search/users?q=location:${encodeURIComponent(cityName)}&sort=followers&order=desc`)
+            .then(response => response.json())
+            .then(data => {
+                const topUsers = data.items.slice(0, 5); // Get top 5 users
+                let userList = `<strong>Top users in ${cityName}:</strong><ul>`;
+                topUsers.forEach(user => {
+                    userList += `<li><a href="${user.html_url}" target="_blank">${user.login}</a> (Followers: ${user.followers || 'N/A'})</li>`;
+                });
+                userList += '</ul>';
+                alert(userList); // Display the top users in an alert (can be replaced with a modal or other UI element)
+            })
+            .catch(err => {
+                console.error(`Error fetching top users for ${cityName}:`, err);
+            });
+    }
 
     // Custom number markers (optional, can be removed if not needed)
     /*
