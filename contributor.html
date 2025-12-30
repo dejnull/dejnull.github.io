@@ -41,10 +41,59 @@
         .back-button:hover {
             background-color: #0f766e; /* Darker primary color */
         }
+
+        .search-form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .search-form input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            width: 300px;
+        }
+
+        .search-form button {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            background-color: #3b82f6; /* Secondary color */
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .search-form button:hover {
+            background-color: #2563eb; /* Darker secondary color */
+        }
     </style>
 </head>
 <body>
     <img src="contributor.gif" alt="Contributor GIF">
     <a href="index.html" class="back-button">Back to Index</a>
+    <form class="search-form" onsubmit="performSearch(event)">
+        <input type="text" id="surname" placeholder="Enter your surname" required>
+        <input type="text" id="role" placeholder="Enter your current role" required>
+        <button type="submit">Check LinkedIn Reach</button>
+    </form>
+    <script>
+        function performSearch(event) {
+            event.preventDefault();
+            const surname = document.getElementById('surname').value.trim();
+            const role = document.getElementById('role').value.trim();
+            if (surname && role) {
+                const query = `https://www.google.com/search?q=site:linkedin.com+"${surname}"+"${role.replace(/%20/g, ' ')}"`;
+                window.open(query, '_blank');
+            }
+        }
+    </script>
 </body>
 </html>
