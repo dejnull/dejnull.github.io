@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
         [52.5200, 13.4050, 1.0], // Berlin
         [48.1351, 11.5820, 0.8],
         [50.1109, 8.6821, 0.6],
+        [48.1351, 11.5820, 1.0], // Munich
         // France
         [48.8566, 2.3522, 1.0], // Paris
         [45.7640, 4.8357, 0.8],
@@ -52,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
         {name: "Vienna", coords: [48.2082, 16.3738]},
         {name: "Zurich", coords: [47.3769, 8.5417]},
         {name: "Warsaw", coords: [52.2297, 21.0122]},
+        {name: "Munich", coords: [48.1351, 11.5820]},
     ];
 
     cities.forEach(city => {
